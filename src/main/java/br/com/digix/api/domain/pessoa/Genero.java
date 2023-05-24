@@ -1,4 +1,4 @@
-package br.com.digix.api.domain;
+package br.com.digix.api.domain.pessoa;
 
 public enum Genero {
     MASCULINO("Masculino"),
