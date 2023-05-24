@@ -2,9 +2,12 @@ package br.com.digix.api.service;
 
 import br.com.digix.api.domain.familia.Familia;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.assertj.core.api.Assertions.*;
 
-public class CalculadoraPontosTest {
+@SpringBootTest
+class CalculadoraPontosTest {
 
     @Test
     public void calcularPontuacao_RendaAte900_PontuacaoCorreta() {
@@ -20,7 +23,7 @@ public class CalculadoraPontosTest {
     }
 
     @Test
-    public void calcularPontuacao_RendaEntre901e1500_PontuacaoCorreta() {
+    public void calcular_Pontuacao_de_Renda_Entre_901_e_1500() {
         // Arrange
         Familia familia = new Familia();
         familia.setRendaTotal(1200);
