@@ -2,8 +2,9 @@ package br.com.digix.api.domain.familia;
 
 import br.com.digix.api.domain.familia.Familia;
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class PontuacaoFamilia {
     private Familia familia;
     private int pontuacao;

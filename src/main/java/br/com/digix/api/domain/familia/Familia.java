@@ -22,8 +22,10 @@ public class Familia {
     private int dependentes;
     @OneToOne(mappedBy = "familia")
     private Pessoa pessoa;
+    private Boolean ativo;
 
     public Familia(DadosCadastroFamilia dados) {
+        this.ativo = true;
         this.rendaTotal = dados.rendaTotal();
         this.dependentes = dados.dependentes();
         this.pessoa = dados.pessoa();
@@ -31,6 +33,9 @@ public class Familia {
         if (this.pessoa != null) {
             this.pessoa.setFamilia(this);
         }
+    }
+
+    public Familia(int id, double renda, int dependentes, Object o) {
     }
 
     public void atualizarInformacoes(DadosAtualizacaoFamilia dados) {
@@ -45,5 +50,8 @@ public class Familia {
             this.pessoa = pessoa;
             pessoa.setFamilia(this);
         }
+    }
+    public void excluir() {
+        this.ativo = false;
     }
 }
