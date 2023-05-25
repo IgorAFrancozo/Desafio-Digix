@@ -1,6 +1,7 @@
 package br.com.digix.api.service;
 
 import br.com.digix.api.domain.familia.Familia;
+import br.com.digix.api.domain.familia.PontuacaoFamilia;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

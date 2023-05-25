@@ -1,4 +1,4 @@
-package br.com.digix.api.service;
+package br.com.digix.api.domain.familia;
 
 import br.com.digix.api.domain.familia.Familia;
 import lombok.Data;

@@ -4,8 +4,7 @@ public enum Genero {
     MASCULINO("Masculino"),
     FEMININO("Feminino"),
     OUTRO("Outro"),
-    NAO_ESPECIFICADO("Não Especificado"),
-    PERSONALIZADO("Personalizado");
+    NAO_ESPECIFICADO("Não Especificado");
 
     private final String descricao;
 
