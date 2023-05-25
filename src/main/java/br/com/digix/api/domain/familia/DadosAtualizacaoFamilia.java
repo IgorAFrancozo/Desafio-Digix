@@ -1,7 +1,12 @@
 package br.com.digix.api.domain.familia;
 
-record DadosAtualizacaoFamilia(
+import br.com.digix.api.domain.pessoa.Pessoa;
+import lombok.Getter;
+
+import java.util.List;
+public record DadosAtualizacaoFamilia(
         double rendaTotal,
-        int dependentes
+        int dependentes,
+        Pessoa pessoa
 ) {
 }

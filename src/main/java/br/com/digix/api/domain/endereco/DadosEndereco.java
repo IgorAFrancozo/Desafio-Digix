@@ -1,7 +1,8 @@
 package br.com.digix.api.domain.endereco;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 public record DadosEndereco(@NotBlank
                             String logradouro,

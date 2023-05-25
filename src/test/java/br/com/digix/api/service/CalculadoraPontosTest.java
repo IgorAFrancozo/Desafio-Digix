@@ -2,64 +2,49 @@ package br.com.digix.api.service;
 
 import br.com.digix.api.domain.familia.Familia;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-class CalculadoraPontosTest {
+public class CalculadoraPontosTest {
 
     @Test
-    public void calcularPontuacao_RendaAte900_PontuacaoCorreta() {
-        // Arrange
-        Familia familia = new Familia();
-        familia.setRendaTotal(900);
-
-        // Act
+    public void deve_calcular_pontuacao_renda_ate_900() {
+        Familia familia = new Familia(1, 800, 0, null);
         PontuacaoFamilia pontuacao = CalculadoraPontos.calcularPontuacao(familia);
 
-        // Assert
-        assertThat(pontuacao.getPontuacao()).isEqualTo(5);
+        assertThat(pontuacao.getPontuacao())
+                .as("Pontuação para Renda até 900")
+                .isEqualTo(5);
     }
 
     @Test
-    public void calcular_Pontuacao_de_Renda_Entre_901_e_1500() {
-        // Arrange
-        Familia familia = new Familia();
-        familia.setRendaTotal(1200);
-
-        // Act
+    public void deve_calcular_pontuacao_renda_de_901_ate_1500() {
+        Familia familia = new Familia(2, 1200, 0, null);
         PontuacaoFamilia pontuacao = CalculadoraPontos.calcularPontuacao(familia);
 
-        // Assert
-        assertThat(pontuacao.getPontuacao()).isEqualTo(3);
+        assertThat(pontuacao.getPontuacao())
+                .as("Pontuação para Renda até 1500")
+                .isEqualTo(3);
     }
 
     @Test
-    public void calcularPontuacao_Dependentes3OuMais_PontuacaoCorreta() {
-        // Arrange
-        Familia familia = new Familia();
-        familia.setRendaTotal(2000);
-        familia.setDependentes(4);
-
-        // Act
+    public void deve_calcular_pontuacao_dependente_de_3_ou_Mais() {
+        Familia familia = new Familia(3, 2000, 4, null);
         PontuacaoFamilia pontuacao = CalculadoraPontos.calcularPontuacao(familia);
 
-        // Assert
-        assertThat(pontuacao.getPontuacao()).isEqualTo(3);
+        assertThat(pontuacao.getPontuacao())
+                .as("Pontuação com 3 dependentes ou mais")
+                .isEqualTo(3);;
     }
 
     @Test
-    public void calcularPontuacao_DependentesEntre1e2_PontuacaoCorreta() {
-        // Arrange
-        Familia familia = new Familia();
-        familia.setRendaTotal(2000);
-        familia.setDependentes(2);
-
-        // Act
+    public void deve_calcular_pontuacao_com_um_ou_dois_dependentes() {
+        int pontuacaoEsperada = 2;
+        Familia familia = new Familia(4, 2000, 1, null);
         PontuacaoFamilia pontuacao = CalculadoraPontos.calcularPontuacao(familia);
 
-        // Assert
-        assertThat(pontuacao.getPontuacao()).isEqualTo(2);
+        assertThat(pontuacao.getPontuacao())
+                .as("Pontuação com 1 dependentes ou 2")
+                .isEqualTo(pontuacaoEsperada);;;
     }
 }
