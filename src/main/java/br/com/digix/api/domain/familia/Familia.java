@@ -35,9 +35,6 @@ public class Familia {
         }
     }
 
-    public Familia(int id, double renda, int dependentes, Object o) {
-    }
-
     public void atualizarInformacoes(DadosAtualizacaoFamilia dados) {
         if (dados.rendaTotal() != 0) {
             this.rendaTotal = dados.rendaTotal();

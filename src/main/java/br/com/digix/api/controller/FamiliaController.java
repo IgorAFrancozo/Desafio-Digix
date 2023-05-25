@@ -31,7 +31,7 @@ public class FamiliaController {
     }
 
     @GetMapping
-    public Page<DadosListagemFamilia> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+    public Page<DadosListagemFamilia> listarFamilia(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemFamilia::new);
     }
     @PostMapping
