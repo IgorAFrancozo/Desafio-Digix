@@ -33,15 +33,10 @@ class FamiliaServiceTest {
         when(familiaRepository.findAll()).thenReturn(familias);
         List<PontuacaoFamilia> result = familiaService.listarFamiliasPorPontuacao();
 
-        // Verificações
         assertThat(result).isNotNull();
         assertThat(result).hasSize(2);
-
-        // Verifica a ordem decrescente da pontuação
         assertThat(result).extracting(PontuacaoFamilia::getPontuacao)
                 .isSortedAccordingTo((a, b) -> b - a);
-
-        // Verifica se as famílias estão corretamente mapeadas para pontuações
         assertThat(result).extracting(PontuacaoFamilia::getFamilia)
                 .containsExactlyInAnyOrder(familia1, familia2);
     }

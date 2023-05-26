@@ -32,5 +32,36 @@ public class Pessoa {
     @OneToOne
     @JoinColumn(name = "familia_id")
     private Familia familia;
+    private boolean ativo;
 
+    public Pessoa(DadosCadastroPessoa dados) {
+        this.ativo = true;
+        this.nome = dados.nome();
+        this.idade = dados.idade();
+        this.genero = dados.genero();
+        this.cpf = dados.cpf();
+        this.endereco = new Endereco(dados.endereco());
+        this.telefone = dados.telefone();
+        this.email = dados.email();
+        this.familia = dados.familia();
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoPessoa dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.idade() != 0) {
+            this.idade = dados.idade();
+        }
+        if (dados.genero() != null) {
+            Genero genero = dados.genero();
+        }
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
 }

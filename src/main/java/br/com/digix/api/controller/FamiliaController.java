@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("familias")
+@RequestMapping("/familias")
 public class FamiliaController {
     private final FamiliaService familiaService;
     @Autowired
@@ -34,15 +34,24 @@ public class FamiliaController {
     public Page<DadosListagemFamilia> listarFamilia(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemFamilia::new);
     }
+
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastroFamilia dados) {
         repository.save(new Familia(dados));
     }
+
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody @Valid DadosAtualizacaoFamilia dados) {
-        var medico = repository.getReferenceById(dados.id());
-        medico.atualizarInformacoes(dados);
+        var familia = repository.getReferenceById(dados.id());
+        familia.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        var familia = repository.getReferenceById(id);
+        familia.excluir();
     }
 }
