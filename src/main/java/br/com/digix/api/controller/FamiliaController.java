@@ -26,8 +26,9 @@ public class FamiliaController {
     }
 
     @GetMapping
-    public Page<DadosListagemFamilia> listarFamilia(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemFamilia::new);
+    public ResponseEntity<Page<DadosListagemFamilia>> listarFamilia(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+        var pessoa = repository.findAllByAtivoTrue(paginacao).map(DadosListagemFamilia::new);
+        return ResponseEntity.ok(pessoa);
     }
 
     @GetMapping("/pontuacao")
