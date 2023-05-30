@@ -10,15 +10,25 @@ O sistema é baseado em Spring Boot 2.7.12 para a criação de uma API Restful. 
 # Tecnologias Utilizadas
 
 •	Spring Boot 2.7.12
+
 •	Java 17
+
 •	Maven
+
 # Dependências
+
 •	spring-boot-devtools
+
 •	lombok
+
 •	spring-boot-starter-validation
+
 •	spring-boot-starter-data-jpa
+
 •	spring-boot-starter-web
+
 •	mysql-connector-java
+
 •	flyway-core
 
 # Link do Swagger
@@ -32,10 +42,15 @@ O projeto utiliza o Spring Data JPA em conjunto com o Flyway para migrações do
 
 # •	application.properties:
 # # Configurações do banco de dados MySQL
+
 spring.datasource.url=jdbc:mysql://localhost:3306/habitpop
+
 spring.datasource.username=root
+
 spring.datasource.password=Admin123
+
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
 server.error.include-stacktrace=never
 
 # # Configurações do Flyway
