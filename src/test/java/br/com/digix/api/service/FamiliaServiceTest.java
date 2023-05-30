@@ -25,7 +25,7 @@ class FamiliaServiceTest {
     }
 
     @Test
-    public void testListarFamiliasPorPontuacao() {
+    void testListarFamiliasPorPontuacao() {
         Familia familia1 = new FamiliaBuilder().comId(1L).comRendaTotal(800).comQuantidadeDependentes(3).isAtivo(true).build();
         Familia familia2 = new FamiliaBuilder().comId(2L).comRendaTotal(1500).comQuantidadeDependentes(0).isAtivo(true).build();
         List<Familia> familias = Arrays.asList(familia1, familia2);

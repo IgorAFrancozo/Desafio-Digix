@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FamiliaRepository extends JpaRepository<Familia, Long> {
     Page<Familia> findAllByAtivoTrue(Pageable paginacao);
+    Page<Familia> findAllByAtivoFalse(Pageable paginacao);
 }
