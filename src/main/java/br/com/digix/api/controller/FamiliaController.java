@@ -29,11 +29,13 @@ public class FamiliaController {
     public Page<DadosListagemFamilia> listarFamilia(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemFamilia::new);
     }
+
     @GetMapping("/pontuacao")
     public ResponseEntity<List<PontuacaoFamilia>> listarFamiliasPorPontuacao() {
         List<PontuacaoFamilia> pontuacoes = familiaService.listarFamiliasPorPontuacao();
         return ResponseEntity.ok(pontuacoes);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<DadosDetalhesFamilia> detalharFamilia(@PathVariable long id) {
         var familia = repository.getReferenceById(id);
